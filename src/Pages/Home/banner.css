@@ -1,6 +1,13 @@
 .bg-banner{
     background-image: url(../../assets/images/bg.png);
     background-repeat: no-repeat;
-    width: 100%;
-    
+    background-size: cover;
+}
+
+@media (max-width: 550px) and (min-width: 100px) {
+    .cardInfo-size{
+        width: 100%; 
+        background-color: red;  
+       
+    }
 }

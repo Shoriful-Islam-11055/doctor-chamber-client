@@ -30,14 +30,15 @@ const Services = () => {
         ></ServicesCard>
       </div>
 
-      <div className="w-9/12 mx-auto mt-12 cardInfo-size">
+      <div className="w-9/12 mx-auto mt-12 cardInfo-size mb-28">
         <div class="card lg:card-side bg-white py-12">
-          <figure>
+          
             <img
+            className="max-w-[400px]"
               src= {treatment}
               alt="Album"
             />
-          </figure>
+          
           <div class="card-body">
             <div>
               <h1 class="text-5xl font-bold">Exceptional Dental Care, on Your Terms</h1>

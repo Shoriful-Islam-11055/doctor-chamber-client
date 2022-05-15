@@ -34,13 +34,13 @@ const Testimonial = () => {
   ];
   return (
     <div className="mx-6">
-      <div className="flex justify-between">
-        <div className="mt-[50px]">
+      <div className="flex justify-between items-center">
+        <div>
           <h3 className="text-primary text-3xl">Testimonial</h3>
           <h2 className="text-4xl">What Our Patients Says</h2>
         </div>
         <div>
-          <img className="max-w-[192px] h-[156px]" src={quote} alt="" />
+          <img className="w-24 lg:w-48" src={quote} alt="" />
         </div>
       </div>
       <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-col-2 gap-6">

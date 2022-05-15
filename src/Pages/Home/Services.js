@@ -1,5 +1,6 @@
 import React from "react";
 import ServicesCard from "./ServicesCard";
+import '../../Pages/Home/InfoCard.css'
 import FluorideImg from "../../assets/images/fluoride.png";
 import cavityImg from "../../assets/images/cavity.png";
 import whiteningImg from "../../assets/images/whitening.png";
@@ -30,7 +31,7 @@ const Services = () => {
         ></ServicesCard>
       </div>
 
-      <div className="w-9/12 mx-auto mt-12 cardInfo-size mb-28">
+      <div className="w-9/12 mx-auto mt-12 cardInfo-size mb-20">
         <div class="card lg:card-side bg-white py-12">
           
             <img

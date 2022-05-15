@@ -4,12 +4,15 @@ import appointmentBg from "../../assets/images/appointment.png";
 
 const AppointmentCard = () => {
   return (
-    <div style={{ background: `url(${appointmentBg})` }} className=" mb-12 flex justify-center items-center px-12 mt-20">
-      <div className="flex-1">
+    <div
+      style={{ background: `url(${appointmentBg})` }}
+      className=" mb-12 flex justify-center items-center px-12 appointment-small"
+    >
+      <div className="flex-1 hidden lg:block">
         <img className="mt-[-150px]" src={doctor} alt="Album" />
       </div>
       <div className="text-white flex-1">
-        <p className="text-primary text-basemb-3">Appointment</p>
+        <p className="text-primary text-3xl mb-3">Appointment</p>
         <h1 class="text-4xl font-bold mb-3">Make an appointment Today</h1>
         <p className="text-xl mb-3">
           It is a long established fact that a reader will be distracted by the

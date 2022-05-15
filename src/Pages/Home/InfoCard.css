@@ -1,7 +1,8 @@
-/* @media (max-width: 550px) and (min-width: 100px) {
-    .cardInfo-size{
-        width: 50%; 
-        background-color: red;  
+@media (max-width: 1024px) and (min-width: 100px) {
+    .appointment-small{
+        width: 100%; 
+        padding-top: 25px;
+        padding-bottom: 25px;
        
     }
-} */
+}

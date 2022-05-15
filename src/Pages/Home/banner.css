@@ -6,8 +6,6 @@
 
 @media (max-width: 550px) and (min-width: 100px) {
     .cardInfo-size{
-        width: 100%; 
-        background-color: red;  
-       
+        width: 98%;     
     }
 }

@@ -10,7 +10,7 @@ const Services = () => {
   return (
     <div className="mt-5">
       <div className="text-center py-12">
-        <p className="text-base text-secondary">OUR SERVICES</p>
+        <p className="text-2xl text-bold text-secondary">OUR SERVICES</p>
         <p className="text-4xl">Services We Provide</p>
       </div>
       <div className="grid gap-9 grid-cols-1 lg:grid-cols-3 px-6">

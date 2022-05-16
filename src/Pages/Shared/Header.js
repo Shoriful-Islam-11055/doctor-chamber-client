@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import text from '../../assets/icons/band-logo.PNG'
 
 const Header = () => {
   const ManuItems = (
@@ -40,7 +41,7 @@ const Header = () => {
               {ManuItems}
             </ul>
           </div>
-          <Link to='/' class="btn btn-ghost normal-case text-xl">Doctor Chamber</Link>
+          <Link to='/' class="btn btn-ghost"><img className="w-48" src={text} alt="" /></Link>
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal p-0">{ManuItems}</ul>

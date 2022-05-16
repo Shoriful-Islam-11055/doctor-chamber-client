@@ -13,7 +13,7 @@ const AppointmentCard = () => {
       </div>
       <div className="text-white flex-1">
         <p className="text-primary text-3xl mb-3">Appointment</p>
-        <h1 class="text-4xl font-bold mb-3">Make an appointment Today</h1>
+        <h1 className ="text-4xl font-bold mb-3">Make an appointment Today</h1>
         <p className="text-xl mb-3">
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
@@ -22,7 +22,7 @@ const AppointmentCard = () => {
           look like readable English. Many desktop publishing packages and web
           page
         </p>
-        <button class="btn btn-primary font-bold text-white bg-gradient-to-r from-secondary to-primary">
+        <button className ="btn btn-primary font-bold text-white bg-gradient-to-r from-secondary to-primary">
           Get Started
         </button>
       </div>

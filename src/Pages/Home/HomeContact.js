@@ -3,7 +3,7 @@ import appointmentBg from "../../assets/images/appointment.png";
 
 const HomeContact = () => {
   return (
-    <section className="mt-20 py-12 mb-20" style={{ background: `url(${appointmentBg})` }}>
+    <section className="mt-20 py-12" style={{ background: `url(${appointmentBg})` }}>
       <div className="text-white">
         <div className="text-center">
           <p className="text-primary text-3xl mb-3">Contact US</p>

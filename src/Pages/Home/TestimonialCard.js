@@ -7,7 +7,7 @@ const TestimonialCard = ({patient}) => {
         <div class="card-body text-black">
           <p>{patient.description}</p>
           <div class="flex items-center">
-            <div><img className="mr-8" src={patient.img} alt="" /></div>
+            <div><img className="mr-8 rounded-full ring ring-primary ring-offset-base-100" src={patient.img} alt="" /></div>
             <div>
                 <p className="text-2xl text-bold">{patient.name}</p>
                 <p className="text-xl">{patient.city}</p>

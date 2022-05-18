@@ -1,0 +1,13 @@
+@media (max-width: 550px) and (min-width: 100px) {
+    .appCardWidth{
+        width: 98%;
+        padding: 5px;    
+    }
+}
+@media (max-width: 550px) and (min-width: 100px) {
+    .chairImg{
+        width: 98%;
+        padding: 5px;    
+       
+    }
+}

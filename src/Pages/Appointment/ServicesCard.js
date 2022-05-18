@@ -9,14 +9,16 @@ const ServicesCard = ({ service }) => {
           <h2 className="card-title">{name}</h2>
           <p>
               {
-                  slots.length > 0 ? <span>{slots[0]}</span> : <span>NOT AVAILABLE</span>
+                slots.length > 0 ?
+                <span>{slots[0]}</span> : 
+                <span className="text-red-500">NOT AVAILABLE</span>
               }
           </p>
           <p className="mb-5">
             {slots.length} {slots.length > 1 ? "SPACES" : "SPACE"} AVAILABLE
           </p>
           <div className="card-actions">
-            <button className="btn btn-primary font-bold text-white bg-gradient-to-r from-secondary to-primary">
+            <button disabled ={slots.length === 0} className="btn btn-primary font-bold text-white bg-gradient-to-r from-secondary to-primary">
               Book Appointment
             </button>
           </div>

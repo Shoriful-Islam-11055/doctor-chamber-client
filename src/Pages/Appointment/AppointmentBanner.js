@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import chair from "../../assets/images/chair.png";
 import { format } from "date-fns";
 
 
-const AppointmentBanner = () => {
-  const [date, setDate] = useState(new Date());
+const AppointmentBanner = ({date, setDate}) => {
+
   let footer = <p>Please pick a day.</p>;
   if (date) {
     footer = <p className="text-2xl">You picked {format(date, "PP")}.</p>;

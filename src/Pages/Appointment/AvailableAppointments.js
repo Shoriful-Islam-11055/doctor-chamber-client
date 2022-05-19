@@ -9,7 +9,7 @@ const AvailableSlots = ({date}) => {
   const [appointment, setAppointment] = useState(null);
 
   useEffect(()=>{
-    fetch('services.json')
+    fetch('http://localhost:5000/services')
     .then(res => res.json())
     .then(data => setServices(data));
   },[])
@@ -31,7 +31,7 @@ const AvailableSlots = ({date}) => {
          </ServicesCard>)
        }
      </div>
-     {appointment && <AppointmentModal appointment = {appointment}></AppointmentModal>}
+     {appointment && <AppointmentModal date ={date} setAppointment = {setAppointment}  appointment = {appointment}></AppointmentModal>}
     </section>
   );
 };

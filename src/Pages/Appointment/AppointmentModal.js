@@ -1,46 +1,68 @@
+import { format } from "date-fns";
 import React from "react";
 
-const AppointmentModal = ({ appointment }) => {
+const AppointmentModal = ({ appointment, date, setAppointment }) => {
+  const { name, slots } = appointment;
+
+  const bookAppointment = event =>{
+      event.preventDefault();
+      const slot = event.target.slot.value;
+      console.log(slot);
+      setAppointment(null)
+  }
   return (
     <div>
-      <input type="checkbox" id="appointment-modal" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
+      <input type="checkbox" id="appointment-modal" className="modal-toggle" />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
           <label
             for="appointment-modal"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-          <h3 class="font-bold text-lg mb-8">Booking for : {appointment.name}</h3>
+          <h3 className="font-bold text-xl mb-8">Booking for : {name}</h3>
 
-          <form className="py-4">
+          <form onSubmit={bookAppointment} className="py-4">
             <input
               type="text"
-              placeholder="Type here"
-              class="input input-bordered w-full max-w-full mb-5"
+              value={format(date, "PP")}
+              className="input input-bordered w-full max-w-full mb-5 text-xl text-bold text-black"
+              readOnly
+            />
+
+            <select
+              name="slot"
+              className="input input-bordered w-full max-w-full mb-5 text-black text-xl"
+            >
+              {slots.map((slot) => (
+                <option value={slot}>{slot}</option>
+              ))}
+            </select>
+
+            <input
+              name="fullName"
+              type="text"
+              placeholder="Full Name"
+              className="input input-bordered w-full max-w-full mb-5 text-xl"
             />
             <input
+              name="phoneNumber"
               type="text"
-              placeholder="Type here"
-              class="input input-bordered w-full max-w-full mb-5"
+              placeholder="Phone Number"
+              className="input input-bordered w-full max-w-full mb-5 text-xl"
             />
             <input
-              type="text"
-              placeholder="Type here"
-              class="input input-bordered w-full max-w-full mb-5"
+              name="email"
+              type="email"
+              placeholder="Email Address"
+              className="input input-bordered w-full max-w-full mb-5 text-xl"
             />
             <input
-              type="text"
-              placeholder="Type here"
-              class="input input-bordered w-full max-w-full mb-5"
+              type="submit"
+              value="SUBMIT"
+              className="btn w-full max-w-full py-2 text-xl"
             />
-            <input
-              type="text"
-              placeholder="Type here"
-              class="input input-bordered w-full max-w-full mb-5"
-            />
-            <button class="btn w-full max-w-full py-2">SUBMIT</button>
           </form>
         </div>
       </div>

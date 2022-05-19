@@ -7,8 +7,8 @@ const InfoCard = ({ cardImg, cardTitle, cardBg, cardBody }) => {
         <figure>
           <img className="p-3" src={cardImg} alt="Album" />
         </figure>
-        <div class="card-body">
-          <h2 class="card-title">{cardTitle}!</h2>
+        <div className="card-body">
+          <h2 className="card-title">{cardTitle}!</h2>
           <p>{cardBody}</p>
         </div>
       </div>

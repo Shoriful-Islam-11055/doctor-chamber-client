@@ -13,11 +13,11 @@ const AppointmentBanner = ({date, setDate}) => {
   }
   return (
     <div className="bg-banner">
-      <div class="hero min-h-screen">
-        <div class="hero-content flex-col lg:flex-row-reverse">
+      <div className="hero min-h-screen">
+        <div className="hero-content flex-col lg:flex-row-reverse">
           <img
             src={chair}
-            class="max-w-xl rounded-lg shadow-2xl cardInfo-size"
+            className="max-w-xl rounded-lg shadow-2xl cardInfo-size"
             alt=""
           />
           <div className="max-w-2lg text-2xl mr-12 cardInfo-size">

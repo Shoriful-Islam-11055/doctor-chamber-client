@@ -16,7 +16,7 @@ const AppointmentModal = ({ appointment, date, setAppointment }) => {
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <label
-            for="appointment-modal"
+            htmlFor="appointment-modal"
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕

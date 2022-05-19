@@ -19,7 +19,7 @@ const ServicesCard = ({ service, setAppointment }) => {
           </p>
           <div className="card-actions">
             <label
-              for="appointment-modal"
+              htmlFor="appointment-modal"
               disabled={slots.length === 0}
               onClick={() => setAppointment(service)}
               className="btn btn-primary font-bold text-white bg-gradient-to-r from-secondary to-primary"

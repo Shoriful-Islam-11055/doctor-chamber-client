@@ -1,20 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 
 const Login = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
-  if(user){
-      console.log(user.firstName)
+  if (user) {
+    console.log(user.firstName);
   }
+
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="card w-96 bg-base-100 shadow-2xl">
-        <div className="card-body items-center text-center">
-          <h2 className="card-title text-4xl text-bold">LOGIN</h2>
+      <div className="card w-96 bg-base-100 shadow-2xl p-6">
+        <div className="">
+          <h2 className="text-center text-4xl font-bold py-6">LOGIN</h2>
           <form>
+              
             <div className="form-control w-full max-w-full">
               <label className="label">
                 <span className="text-2xl">Email</span>
@@ -47,7 +48,7 @@ const Login = () => {
                 name="submit"
                 type="submit"
                 value="SUBMIT"
-                className="btn btn-wide"
+                className="btn btn-wide w-full"
               />
               <label className="text-center">
                 New to chamber?&nbsp;
@@ -59,7 +60,10 @@ const Login = () => {
           </form>
           <div className="divider">OR</div>
           <div className="card-actions">
-            <button onClick={() => signInWithGoogle()} className="btn btn-wide btn-outline">
+            <button
+              onClick={() => signInWithGoogle()}
+              className="btn btn-wide w-full btn-outline"
+            >
               CONTINUE WITH GOOGLE
             </button>
           </div>

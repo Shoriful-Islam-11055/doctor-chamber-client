@@ -14,7 +14,7 @@ const Registration = () => {
   //Registration or sign In with Google account
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
-  //Registation with email and password
+  //Registration with email and password
   const [createUserWithEmailAndPassword, E_user, E_loading, E_error] =
     useCreateUserWithEmailAndPassword(auth);
 

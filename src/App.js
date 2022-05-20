@@ -11,6 +11,9 @@ import Reviews from "./Pages/Reviews/Reviews";
 import Footer from "./Pages/Shared/Footer";
 import Header from "./Pages/Shared/Header";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   return (
     <div>
@@ -36,7 +39,10 @@ function App() {
         <Route path="/reviews" element={<Reviews></Reviews>}></Route>
         <Route path="/contactUs" element={<ContactUs></ContactUs>}></Route>
       </Routes>
+
+      <ToastContainer />
       <Footer></Footer>
+      
     </div>
   );
 }

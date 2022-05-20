@@ -4,15 +4,25 @@ import auth from "../../firebase.init";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import Loading from "../Shared/Loading";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const Registration = () => {
+  //Registration or sign In with Google account
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
+  //Registation with email and password
   const [createUserWithEmailAndPassword, E_user, E_loading, E_error] =
     useCreateUserWithEmailAndPassword(auth);
+
+  //For userName handling
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  //Navigation for going specific page after registration
+  const navigate = useNavigate();
 
   const {
     register,
@@ -20,12 +30,12 @@ const Registration = () => {
     handleSubmit,
   } = useForm();
 
-  if (user) {
+  if (user || E_user) {
     console.log(user);
   }
 
   //Loading show
-  if (loading || E_loading) {
+  if (loading || E_loading || updating) {
     return <Loading></Loading>;
   }
 
@@ -33,15 +43,21 @@ const Registration = () => {
   let loginError;
   if (error || E_error) {
     loginError = (
-      <p className="text-red-500">{error?.message || E_error?.message}</p>
+      <p className="text-red-500">
+        {error?.message || E_error?.message || updateError?.message}
+      </p>
     );
   }
 
   //Form submission handling
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
-    createUserWithEmailAndPassword(data.email, data.password);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    //For Handling user name
+    await updateProfile({ displayName: data.name });
+    navigate("/appointment")
   };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="card w-96 bg-base-100 shadow-2xl p-6">

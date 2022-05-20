@@ -36,8 +36,14 @@ const AppointmentModal = ({ appointment, date, setAppointment }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        //for closing
+       
+       // for show a notification as a toast
+        if(data.success){
+          toast(`Success Appoint ${formatDate} at ${slot}`)
+        }else{
+          toast.error(`Already have an appoint on ${data.booking?.date} at ${data.booking?.slot}`)
+        }
+         //for closing
         setAppointment(null);
       });
   };

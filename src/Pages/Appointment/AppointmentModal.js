@@ -1,15 +1,18 @@
 import { format } from "date-fns";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const AppointmentModal = ({ appointment, date, setAppointment }) => {
   const { name, slots } = appointment;
+  const [user, loading, error] = useAuthState(auth);
 
-  const bookAppointment = event =>{
-      event.preventDefault();
-      const slot = event.target.slot.value;
-      console.log(slot);
-      setAppointment(null)
-  }
+  const bookAppointment = (event) => {
+    event.preventDefault();
+    const slot = event.target.slot.value;
+    console.log(slot);
+    setAppointment(null);
+  };
   return (
     <div>
       <input type="checkbox" id="appointment-modal" className="modal-toggle" />
@@ -35,29 +38,34 @@ const AppointmentModal = ({ appointment, date, setAppointment }) => {
               name="slot"
               className="input input-bordered w-full max-w-full mb-5 text-black text-xl"
             >
-              {slots.map((slot) => (
-                <option value={slot}>{slot}</option>
+              {slots.map((slot, index) => (
+                <option value={slot} key ={index}>{slot}</option>
               ))}
             </select>
 
             <input
               name="fullName"
+              disabled
               type="text"
-              placeholder="Full Name"
+              value = {user?.displayName || ''}
               className="input input-bordered w-full max-w-full mb-5 text-xl"
             />
+
+            <input
+              name="email"
+              disabled
+              type="email"
+              value = {user?.email || ''}
+              className="input input-bordered w-full max-w-full mb-5 text-xl"
+            />
+
             <input
               name="phoneNumber"
               type="text"
               placeholder="Phone Number"
               className="input input-bordered w-full max-w-full mb-5 text-xl"
             />
-            <input
-              name="email"
-              type="email"
-              placeholder="Email Address"
-              className="input input-bordered w-full max-w-full mb-5 text-xl"
-            />
+
             <input
               type="submit"
               value="SUBMIT"

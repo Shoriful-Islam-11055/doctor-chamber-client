@@ -5,6 +5,7 @@ import Appointment from './Pages/Appointment/Appointment';
 import ContactUs from './Pages/ContactUs/ContactUs';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
+import Registration from './Pages/Registration/Registration';
 import Reviews from './Pages/Reviews/Reviews';
 import Footer from './Pages/Shared/Footer';
 import Header from './Pages/Shared/Header';
@@ -18,6 +19,7 @@ function App() {
         <Route path='/about' element = {<About></About>}></Route>
         <Route path='/appointment' element = {<Appointment></Appointment>}></Route>
         <Route path='/login' element = {<Login></Login>}></Route>
+        <Route path='/registration' element = {<Registration></Registration>}></Route>
         <Route path='/reviews' element = {<Reviews></Reviews>}></Route>
         <Route path='/contactUs' element = {<ContactUs></ContactUs>}></Route>
       </Routes>

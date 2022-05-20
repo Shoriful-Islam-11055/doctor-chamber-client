@@ -2,17 +2,17 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
 import {
-  useSignInWithEmailAndPassword,
+  useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import Loading from "../Shared/Loading";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Registration = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
-  const [signInWithEmailAndPassword, E_user, E_loading, E_error] =
-    useSignInWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, E_user, E_loading, E_error] =
+    useCreateUserWithEmailAndPassword(auth);
 
   const {
     register,
@@ -20,35 +20,68 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
-
   if (user) {
-    console.log(user.firstName);
+    console.log(user);
   }
 
-  //Loading show 
-  if(loading || E_loading){
+  //Loading show
+  if (loading || E_loading) {
     return <Loading></Loading>;
   }
 
   //Show error from react hooks
   let loginError;
-  if(error || E_error){
-    loginError = <p className="text-red-500">{error?.message || E_error?.message}</p>
+  if (error || E_error) {
+    loginError = (
+      <p className="text-red-500">{error?.message || E_error?.message}</p>
+    );
   }
 
   //Form submission handling
   const onSubmit = (data) => {
-      console.log(data)
-      signInWithEmailAndPassword(data.email, data.password);
-    };
-
+    console.log(data);
+    createUserWithEmailAndPassword(data.email, data.password);
+  };
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="card w-96 bg-base-100 shadow-2xl p-6">
         <div className="">
-          <h2 className="text-center text-4xl font-bold py-6">LOGIN</h2>
+          <h2 className="text-center text-4xl font-bold py-4">SIGN UP</h2>
 
           <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-control w-full max-w-full">
+              <label className="label">
+                <span className="text-2xl">Full Name</span>
+              </label>
+              <input
+                type="name"
+                placeholder="Your Full Name"
+                className="input input-bordered w-full max-w-full text-xl"
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "Name is required",
+                  },
+                  pattern: {
+                    value: /^[a-zA-Z0-9]+$/,
+                    message: "Name is not valid", // JS only: <p>error message</p> TS only support string
+                  },
+                })}
+              />
+              <label className="label">
+                {errors.name?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.name.message}
+                  </span>
+                )}
+                {errors.name?.type === "pattern" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.name.message}
+                  </span>
+                )}
+              </label>
+            </div>
+
             <div className="form-control w-full max-w-full">
               <label className="label">
                 <span className="text-2xl">Email</span>
@@ -114,20 +147,23 @@ const Login = () => {
                 )}
               </label>
             </div>
-            
-            { loginError}
+
+            {loginError}
 
             <div className="form-control w-full max-w-full">
               <input
-                name="login"
+                name="signUp"
                 type="submit"
-                value="LOGIN"
+                value="SIGN UP"
                 className="btn btn-wide w-full mt-3"
               />
               <label className="text-center">
-                New to chamber?&nbsp;
-                <Link to = "/registration" className="label-text-alt cursor-pointer text-lg text-primary">
-                  Create Account
+                You have an Account?&nbsp;
+                <Link
+                  to="/login"
+                  className="label-text-alt cursor-pointer text-lg text-primary"
+                >
+                  LOGIN
                 </Link>
               </label>
             </div>
@@ -147,4 +183,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Registration;

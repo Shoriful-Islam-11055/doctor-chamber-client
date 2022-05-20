@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
 import {
@@ -14,9 +14,15 @@ const Login = () => {
   const [signInWithEmailAndPassword, E_user, E_loading, E_error] =
     useSignInWithEmailAndPassword(auth);
 
-    let navigate = useNavigate();
-    let location = useLocation();
-    let from = location.state?.from?.pathname || "/";
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (user || E_user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, E_user, navigate, from]);
 
   const {
     register,
@@ -24,27 +30,23 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
-
-  if (user || E_user) {
-    navigate(from, { replace: true });
-  }
-
-  //Loading show 
-  if(loading || E_loading){
+  //Loading show
+  if (loading || E_loading) {
     return <Loading></Loading>;
   }
 
   //Show error from react hooks
   let loginError;
-  if(error || E_error){
-    loginError = <p className="text-red-500">{error?.message || E_error?.message}</p>
+  if (error || E_error) {
+    loginError = (
+      <p className="text-red-500">{error?.message || E_error?.message}</p>
+    );
   }
 
   //Form submission handling
   const onSubmit = (data) => {
-      console.log(data)
-      signInWithEmailAndPassword(data.email, data.password);
-    };
+    signInWithEmailAndPassword(data.email, data.password);
+  };
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -118,8 +120,8 @@ const Login = () => {
                 )}
               </label>
             </div>
-            
-            { loginError}
+
+            {loginError}
 
             <div className="form-control w-full max-w-full">
               <input
@@ -130,7 +132,10 @@ const Login = () => {
               />
               <label className="text-center">
                 New to chamber?&nbsp;
-                <Link to = "/registration" className="label-text-alt cursor-pointer text-lg text-primary">
+                <Link
+                  to="/registration"
+                  className="label-text-alt cursor-pointer text-lg text-primary"
+                >
                   Create Account
                 </Link>
               </label>

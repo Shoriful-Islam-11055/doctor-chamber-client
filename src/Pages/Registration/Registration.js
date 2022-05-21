@@ -8,6 +8,7 @@ import {
 } from "react-firebase-hooks/auth";
 import Loading from "../Shared/Loading";
 import { Link, useNavigate } from "react-router-dom";
+import useToken from "../../hooks/useToken";
 
 
 const Registration = () => {
@@ -21,6 +22,9 @@ const Registration = () => {
   //For userName handling
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+  //get from user hook for get user and email after registration
+  const [token] = useToken(user || E_user);
+
   //Navigation for going specific page after registration
   const navigate = useNavigate();
 
@@ -30,8 +34,13 @@ const Registration = () => {
     handleSubmit,
   } = useForm();
 
-  if (user || E_user) {
-    console.log(user);
+  // if (user || E_user) {
+  //   console.log(user || E_user)
+  //   // navigate("/appointment")
+  // }
+
+  if (token) {
+    navigate("/appointment")
   }
 
   //Loading show
@@ -51,11 +60,10 @@ const Registration = () => {
 
   //Form submission handling
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     //For Handling user name
     await updateProfile({ displayName: data.name });
-    navigate("/appointment")
   };
 
   return (

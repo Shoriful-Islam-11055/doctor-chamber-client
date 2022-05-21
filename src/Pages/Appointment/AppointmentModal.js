@@ -3,18 +3,19 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { toast } from 'react-toastify';
+import id from "date-fns/esm/locale/id/index.js";
 
 const AppointmentModal = ({ appointment, date, setAppointment }) => {
-  const { name, slots } = appointment;
+  const {_id, name, slots } = appointment;
   const [user, loading, error] = useAuthState(auth);
-  const formatDate = format(date, "pp");
-
+  const formatDate = format(date, "PP");
+  
   const bookAppointment = (event) => {
     event.preventDefault();
     const slot = event.target.slot.value;
 
     const booking = {
-      treatmentId: __dirname,
+      treatmentId: _id,
       treatment: name,
       date: formatDate,
       slot,

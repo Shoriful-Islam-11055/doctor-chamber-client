@@ -5,7 +5,7 @@ import auth from "../../firebase.init";
 import { toast } from 'react-toastify';
 import id from "date-fns/esm/locale/id/index.js";
 
-const AppointmentModal = ({ appointment, date, setAppointment }) => {
+const AppointmentModal = ({ appointment, date, setAppointment, refetch }) => {
   const {_id, name, slots } = appointment;
   const [user, loading, error] = useAuthState(auth);
   const formatDate = format(date, "PP");
@@ -45,6 +45,7 @@ const AppointmentModal = ({ appointment, date, setAppointment }) => {
           toast.error(`Already have an appoint on ${data.booking?.date} at ${data.booking?.slot}`)
         }
          //for closing
+         refetch();
         setAppointment(null);
       });
   };

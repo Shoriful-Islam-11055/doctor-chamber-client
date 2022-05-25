@@ -4,7 +4,7 @@ import Loading from "../Shared/Loading";
 import DoctorsRow from "./DoctorsRow";
 
 const ManageDoctors = () => {
-  const { data: doctors, isLoading } = useQuery("doctor", () =>
+  const { data: doctors, isLoading, refetch } = useQuery("doctor", () =>
     fetch("http://localhost:5000/doctor", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -25,7 +25,7 @@ const ManageDoctors = () => {
               <tr>
                 <th>
                   <label>
-                    <input type="checkbox" class="checkbox" />
+                    <input required type="checkbox" class="checkbox" />
                   </label>
                 </th>
                 <th className="text-xl">Name</th>
@@ -39,6 +39,7 @@ const ManageDoctors = () => {
                  key={doctor._key}
                  doctor = {doctor}
                  index = {index}
+                 refetch = {refetch}
                  ></DoctorsRow>)
              }
             </tbody>
